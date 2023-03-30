@@ -31,6 +31,53 @@
     </ul>
 
     <script>
+      //create three variables that hold references to the three elements below. 
+      const ul = document.querySelector('ul');
+      const input = document.querySelector('input');
+      const button = document.querySelector('button');
+
+      button.addEventListener('click', press);
+
+      //created a function that runs in response to the button being pressed
+      function press(){
+   
+          //storing the current value of the input element in a variable
+          const userInput = input.value;
+         
+          //emptying the the input element by settings its value to an empty string
+          input.value = '';
+
+          //create three new elements 
+          const li = document.createElement('li');
+          const span = document.createElement('span');
+          const button2 = document.createElement('button');
+
+          //append the span and button as children of the list item
+          li.appendChild(span);
+          li.appendChild(button2);
+
+          //setting the text content of the span to the input element saved earlier 
+          span.textContent = userInput;
+
+          //setting the text content of the button to 'delete'
+          button2.textContent = 'Delete';
+
+          //appending the list item as a child of the list 
+          ul.appendChild(li);
+
+          //attach an event listener to the delete button so that when clicked it will delete the entire list item
+          button2.addEventListener('click', deleteFunction);
+          
+          function deleteFunction(){
+            ul.removeChild(li);
+          }
+        
+          //use the focus() method to focus the input element ready for entering the next shopping list item.
+          input.focus();
+
+      }
+
+    
 
     </script>
   </body>
